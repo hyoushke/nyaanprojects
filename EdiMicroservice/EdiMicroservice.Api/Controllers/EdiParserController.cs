@@ -19,7 +19,7 @@ namespace EdiMicroservice.Api.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            string a = "ISA*00*          *00*          *09*001288364I     *01*1498253538     *190117*1649*U*00401*000000112*0*P*" +
+            string ediX12 = "ISA*00*          *00*          *09*001288364I     *01*1498253538     *190117*1649*U*00401*000000112*0*P*" +
                          ":!GS*PO*001288364I*1498253538*20190117*1649*112*X*004010" +
                          "!ST*850*0232" +
                          "!BEG*00*SA*1103408478**20190117" +
@@ -45,12 +45,55 @@ namespace EdiMicroservice.Api.Controllers
                          "!DTM*002*20190131" +
                          "!CTT*1*250" +
                          "!AMT*TT*230" +
-                         "!SE*22*0232!GE*1*112" +
+                         "!SE*22*0232" +
+                         
+                         "!GE*1*112" +
+
                          "!IEA*1*000000112!";
 
 
-            IList<string> z = a.Split("!");
-            string gg = "";
+            //int startIndex = ediX12.IndexOf("!GS");
+            //int endIndex = ediX12.IndexOf("!GE");
+
+            //string a = ediX12.Split("!GE")[0];
+
+            string a = ediX12;
+
+
+
+
+            IList<string> segments = ediX12.Replace("!", "x1000!!").Split("x1000!");
+
+            List<string> details = new List<string>();
+
+            bool startDetails = false;
+            foreach(var s in segments)
+            {
+                if (s.Contains("!PO"))
+                {
+                    startDetails = true;
+                }
+
+                if (startDetails)
+                {
+                    details.Add(s);
+                }
+
+                if (s.Contains("!GE"))
+                {
+                    break;
+                }
+                
+            }
+
+            System.Console.WriteLine(details.ToString());
+
+
+
+
+
+
+            //string gg = "";
 
             //Get ISA
             IList<string> ISA = a.Replace("!", "___!").Split("___").Where(e => e.Contains("ISA")).ToList();;
@@ -89,10 +132,10 @@ namespace EdiMicroservice.Api.Controllers
 
             //Get all N1's with child n2 and n3
             //you can extract each n1's children using this query
-            IList<string> N1 = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")).ToArray().Join("").Replace("!N1", "__!N1").Split("__").ToList();
+            //IList<string> N1 = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")  ).ToArray().Join("").Replace("!N1", "__!N1").Split("__").ToList();
 
             //GET all N1's only
-            IList<string> N1root = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")).ToArray().Join("").Replace("!N1", "__!N1").Split("__").Where(n => n.Contains("N1"));
+            //IList<string> N1root = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")).ToArray().Join("").Replace("!N1", "__!N1").Split("__").Where(n => n.Contains("N1")).ToList();
 
 
             //GET ALL PO1
