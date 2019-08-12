@@ -92,13 +92,45 @@ namespace EdiMicroservice.Api.Controllers
                     if (s.Contains("PID"))
                     {
                         var pid = s.Split("*");
+
                         string ItemDescriptionType = pid[1];
                         string ProcessCharateristicCode = pid[2];
                         string AgencyQualifierCode = pid[3];
                         string Description = pid[4];
+                    }
 
+                    if (s.Contains("DTM"))
+                    {
+                        var dtm = s.Split("*");
+
+                        string DateTimeQualifier = dtm[1];
+                        string Datee = dtm[2];
 
                     }
+
+
+                    if (s.Contains("AMT"))
+                    {
+                        var amt = s.Split("*");
+
+                        string AmountQualifierCode = amt[1];
+                        string MoneytaryAmount = amt[2];
+                        string CreditDebitFlag = amt[3];
+                    }
+
+                    if (s.Contains("CTT"))
+                    {
+                        var ctt = s.Split("*");
+
+                        string NumberOfLineItems = ctt[1];
+                        string HashTotal = ctt[2];
+
+                    }
+
+
+
+
+
                 }
 
                 if (s.Contains("!GE"))
