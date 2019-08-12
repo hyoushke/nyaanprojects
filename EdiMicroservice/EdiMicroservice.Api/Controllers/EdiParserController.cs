@@ -72,11 +72,22 @@ namespace EdiMicroservice.Api.Controllers
                 if (s.Contains("!PO"))
                 {
                     startDetails = true;
+                    var po = s.Split("*");
+                    string ProductId = po[1];
+                    string Quantity = po[2];
+                    string UnitOfMeasurmentCode = po[3];
+                    string UnitPrice = po[4];
+                    string UnitPriceCode = po[5];
+                    string ServiceIdQualifier = po[6];
+                    string ServiceId = po[7];
+                    string ServiceIdQualifier2 = po[8];
+                    string ServiceId2 = po[9];
+
                 }
 
                 if (startDetails)
                 {
-                    details.Add(s);
+                     details.Add(s);
                 }
 
                 if (s.Contains("!GE"))
