@@ -88,6 +88,17 @@ namespace EdiMicroservice.Api.Controllers
                 if (startDetails)
                 {
                      details.Add(s);
+
+                    if (s.Contains("PID"))
+                    {
+                        var pid = s.Split("*");
+                        string ItemDescriptionType = pid[1];
+                        string ProcessCharateristicCode = pid[2];
+                        string AgencyQualifierCode = pid[3];
+                        string Description = pid[4];
+
+
+                    }
                 }
 
                 if (s.Contains("!GE"))
