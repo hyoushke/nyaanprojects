@@ -51,80 +51,71 @@ namespace EdiMicroservice.Api.Controllers
 
             IList<string> z = a.Split("!");
             string gg = "";
-            /*
-                        IBillTo BillTo = new IBillTo
-                        {
-                            string Address1 = "",
-                            string Address2 = ""
-
-                        }
-            */
-
 
             //Get ISA
-            IList<string> ISA = a.Replace("!", "___!").Split("___").Where(e => e.Contains("ISA")).ToList();
+            IList<string> ISA = a.Replace("!", "___!").Split("___").Where(e => e.Contains("ISA")).ToList();;
 
             //Get GS
-            IList<string> GS = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!GS")).ToList();
+            IList<string> GS = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!GS")).ToList();;
 
             //Get ST
-            IList<string> ST = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!ST")).ToArray()
+            IList<string> ST = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!ST")).ToList();
 
             //Get BEG
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!BEG")).ToArray()
+            IList<string> BEG = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!BEG")).ToList();
 
 
-//Get Currency
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!CUR")).ToArray()
+            //Get CUR
+            IList<string> CUR = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!CUR")).ToList();
 
 
-//GET ITD
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!ITD")).ToArray()
+            //GET ITD
+            IList<string> ITD = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!ITD")).ToList();
 
-//GET TD5
-//Carrier Details
-            "!TD5*B***ZZ*Contact buyer for shipping ins" +
-                "!TD5*B***ZZ*tructions" +
+            //GET TD5
+            //Carrier Details
+            //"!TD5*B***ZZ*Contact buyer for shipping ins" +
+            //"!TD5*B***ZZ*tructions" +
 
 
 
-a.Replace("!", "___!").Split("___").Where(e => e.Contains("!TD5")).ToArray()
+            IList<string> TD5 = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!TD5")).ToList();
 
-//GET N9
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N9")).ToArray()
+            //GET N9
+            IList<string> N9 = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N9")).ToList();
 
-//Get MSG
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!MSG")).ToArray()
+            //Get MSG
+            IList<string> MSG = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!MSG")).ToList();
 
-//Get all N1's with child n2 and n3
-//you can extract each n1's children using this query
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")).ToArray().Join("").Replace("!N1", "__!N1").Split("__").ToList();
+            //Get all N1's with child n2 and n3
+            //you can extract each n1's children using this query
+            IList<string> N1 = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")).ToArray().Join("").Replace("!N1", "__!N1").Split("__").ToList();
 
             //GET all N1's only
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")).ToArray().Join("").Replace("!N1", "__!N1").Split("__").Where(n => n.Contains("N1"));
+            IList<string> N1root = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!N")).ToArray().Join("").Replace("!N1", "__!N1").Split("__").Where(n => n.Contains("N1"));
 
 
             //GET ALL PO1
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!PO1")).ToArray()
+            IList<string> PO1 = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!PO1")).ToList();
 
-//GET ALL PID
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!PID")).ToArray()
+            //GET ALL PID
+            IList<string> PID = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!PID")).ToList();
 
-//GET ALL DTM
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!DTM")).ToArray()
+            //GET ALL DTM
+            IList<string> DTM = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!DTM")).ToList();
 
 
-//GET ALL CTT
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!CTT")).ToArray()
+            //GET ALL CTT
+            IList<string> CTT = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!CTT")).ToList();
 
-//GET ALL AMT
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!AMT")).ToArray()
+            //GET ALL AMT
+            IList<string> AMT = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!AMT")).ToList();
 
-//GET ALL SE
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!SE")).ToArray()
+            //GET ALL SE
+            IList<string> SE = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!SE")).ToList();
 
-//GET ALL IEA
-            a.Replace("!", "___!").Split("___").Where(e => e.Contains("!IEA")).ToArray()
+            //GET ALL IEA
+            IList<string> IEA = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!IEA")).ToList();
 
 
 
