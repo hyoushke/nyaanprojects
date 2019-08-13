@@ -145,15 +145,42 @@ namespace EdiMicroservice.Api.Controllers
 
 
 
+            IList<string> ax = ediX12.Replace("!", "x1000!!").Split("x1000!");
+            var isa = ax.Where(e => e.Contains("ISA")).ElementAt(0).Split("*");
+            string AuthorizationInformationQualifier = isa[1];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             //string gg = "";
 
             //Get ISA
-            IList<string> ISA = a.Replace("!", "___!").Split("___").Where(e => e.Contains("ISA")).ToList();;
+            IList<string> ISA = a.Replace("!", "___!").Split("___").Where(e => e.Contains("ISA")).ToList();
+
+
+
+
+
+
+
+
+
+
 
             //Get GS
-            IList<string> GS = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!GS")).ToList();;
+            IList<string> GS = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!GS")).ToList();
 
             //Get ST
             IList<string> ST = a.Replace("!", "___!").Split("___").Where(e => e.Contains("!ST")).ToList();
